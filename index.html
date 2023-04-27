@@ -1,1 +1,42 @@
-Hello World!
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brel G6 meteor timer</title>
+</head>
+<body>
+	<h1>Brel G6 meteor timer</h1>
+	<button id="startButton" onclick="startTimer()">Start Timer</button>
+	<button id="stopButton" onclick="stopTimer()">Stop Timer</button>
+	<div id="timerDisplay"></div>
+	<div id="messageDisplay"></div>
+
+	<script>
+		var interval;
+		function startTimer() {
+			var count = 5;
+			var timerDisplay = document.getElementById("timerDisplay");
+			var messageDisplay = document.getElementById("messageDisplay");
+			interval = setInterval(function() {
+				if(count === 0) {
+					messageDisplay.innerHTML = "Your time is up!";
+					count = 5;
+				}
+				else {
+                	messageDisplay.innerHTML = "";
+					timerDisplay.innerHTML = "Time remaining: " + count + " seconds";
+				}
+				count--;
+			}, 1000);
+		}
+		function stopTimer() {
+			clearInterval(interval);
+			document.getElementById("timerDisplay").innerHTML = "";
+			document.getElementById("messageDisplay").innerHTML = "";
+		}
+	</script>
+    
+    <div id="image">
+    	<img src="heal_bar.jpg" alt="heal_bar_threshold" width="500" height="600">
+    </div>
+</body>
+</html>
